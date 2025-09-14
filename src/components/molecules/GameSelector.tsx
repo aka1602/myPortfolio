@@ -93,7 +93,7 @@ const GameSelector: React.FC<{ onWin: () => void }> = ({ onWin }) => {
                 className={`w-14 h-14 bg-gradient-to-br ${game.gradient} rounded-xl flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-300`}
               >
                 <Icon
-                  name={game.icon as any}
+                  name={game.icon as "Target" | "Zap"}
                   size="lg"
                   className="text-white"
                 />

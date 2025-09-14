@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Typography from "@/components/atoms/Typography";
 import Icon from "@/components/atoms/Icon";
@@ -16,7 +16,6 @@ const NumberGuessingGame: React.FC<{ onWin: () => void }> = ({ onWin }) => {
   const [isGameStarted, setIsGameStarted] = useState<boolean>(false);
   const [maxAttempts] = useState<number>(6);
   const [guessHistory, setGuessHistory] = useState<number[]>([]);
-  const [hintLevel, setHintLevel] = useState<number>(0);
 
   // Get smart hints based on attempts
   const getSmartHint = (target: number, attempts: number) => {
@@ -37,7 +36,6 @@ const NumberGuessingGame: React.FC<{ onWin: () => void }> = ({ onWin }) => {
     setAttempts(0);
     setGameStatus("playing");
     setGuessHistory([]);
-    setHintLevel(0);
     setFeedback("🎯 I'm thinking of a number between 1 and 100!");
     setIsGameStarted(true);
   };
