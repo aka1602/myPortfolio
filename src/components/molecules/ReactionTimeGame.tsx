@@ -13,10 +13,9 @@ const ReactionTimeGame: React.FC<{ onWin: () => void }> = ({ onWin }) => {
   const [bestTime, setBestTime] = useState<number | null>(null);
   const [attempts, setAttempts] = useState(0);
   const [isGameStarted, setIsGameStarted] = useState(false);
-  const [countdown, setCountdown] = useState(0);
 
   const startTimeRef = useRef<number>(0);
-  const timeoutRef = useRef<NodeJS.Timeout>();
+  const timeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   const startGame = () => {
     setIsGameStarted(true);

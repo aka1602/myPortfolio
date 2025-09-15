@@ -169,7 +169,7 @@ const TicTacToeGame: React.FC<{ onWin: () => void }> = ({ onWin }) => {
     return randomMessage;
   };
 
-  const getCellContent = (cell: Player, index: number) => {
+  const getCellContent = (cell: Player) => {
     if (cell === "X") {
       return (
         <div className="w-12 h-12 flex items-center justify-center">
@@ -315,19 +315,19 @@ const TicTacToeGame: React.FC<{ onWin: () => void }> = ({ onWin }) => {
           <div className="flex justify-center">
             <div className="bg-slate-700/30 backdrop-blur-sm rounded-2xl p-6 shadow-xl">
               <div className="grid grid-cols-3 gap-3">
-                {board.map((cell, index) => (
+                {board.map((cell, cellIndex) => (
                   <motion.button
-                    key={index}
+                    key={cellIndex}
                     className={`w-16 h-16 md:w-20 md:h-20 bg-slate-600/50 backdrop-blur-sm border-2 rounded-xl flex items-center justify-center transition-all duration-300 relative overflow-hidden ${
                       cell === null && isPlayerTurn && gameResult === null
                         ? "hover:bg-slate-500/70 border-purple-400/50 cursor-pointer hover:shadow-lg hover:shadow-purple-500/20"
                         : "cursor-not-allowed border-white/10"
                     } ${
-                      winningLine.includes(index)
+                      winningLine.includes(cellIndex)
                         ? "bg-gradient-to-br from-green-500/30 to-emerald-500/30 border-green-400 shadow-lg shadow-green-500/20"
                         : ""
                     }`}
-                    onClick={() => makeMove(index)}
+                    onClick={() => makeMove(cellIndex)}
                     whileHover={
                       cell === null && isPlayerTurn && gameResult === null
                         ? { scale: 1.05, y: -2 }
@@ -361,7 +361,7 @@ const TicTacToeGame: React.FC<{ onWin: () => void }> = ({ onWin }) => {
                           }}
                           className="relative z-10"
                         >
-                          {getCellContent(cell, index)}
+                          {getCellContent(cell)}
                         </motion.div>
                       )}
                     </AnimatePresence>
@@ -369,7 +369,7 @@ const TicTacToeGame: React.FC<{ onWin: () => void }> = ({ onWin }) => {
                     {/* Cell number for empty cells (subtle) */}
                     {cell === null && gameResult === null && (
                       <span className="absolute bottom-1 right-1 text-xs text-gray-500 opacity-30">
-                        {index + 1}
+                        {cellIndex + 1}
                       </span>
                     )}
                   </motion.button>

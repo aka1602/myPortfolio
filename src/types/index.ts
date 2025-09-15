@@ -10,6 +10,7 @@ export interface Project {
   featured: boolean;
   category: "web" | "mobile" | "fullstack";
   status: "completed" | "in-progress" | "planned";
+  color?: string;
 }
 
 export interface WorkExperience {

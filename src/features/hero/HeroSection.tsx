@@ -5,74 +5,20 @@ import { PERSONAL_INFO, SOCIAL_LINKS } from "@/constants/personal";
 import { fadeInRight, staggerContainer, staggerItem } from "@/lib/animations";
 import Typography from "@/components/atoms/Typography";
 import Icon from "@/components/atoms/Icon";
+import Scene3D from "@/components/3d/Scene3D";
 
 const HeroSection: React.FC = () => {
-  // Pre-defined positions to avoid hydration mismatch
-  const particlePositions = Array.from({ length: 50 }, (_, i) => ({
-    left: (i * 7.3) % 100,
-    top: (i * 13.7) % 100,
-    duration: 3 + (i % 4),
-    delay: (i % 10) * 0.2,
-  }));
-
   return (
     <section
       id="home"
       className="relative min-h-screen flex items-center justify-center overflow-hidden"
     >
-      {/* Animated Background */}
+      {/* 3D Background */}
       <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900">
-        {/* Floating Particles */}
-        <div className="absolute inset-0">
-          {particlePositions.map((particle, i) => (
-            <motion.div
-              key={i}
-              className="absolute w-1 h-1 bg-blue-400 rounded-full opacity-20"
-              style={{
-                left: `${particle.left}%`,
-                top: `${particle.top}%`,
-              }}
-              animate={{
-                y: [0, -100, 0],
-                opacity: [0.2, 0.8, 0.2],
-              }}
-              transition={{
-                duration: particle.duration,
-                repeat: Infinity,
-                delay: particle.delay,
-                ease: "easeInOut",
-              }}
-            />
-          ))}
-        </div>
+        <Scene3D className="absolute inset-0 opacity-60" />
 
-        {/* Gradient Orbs */}
-        <motion.div
-          className="absolute top-1/4 left-1/4 w-96 h-96 bg-gradient-to-r from-blue-500/30 to-purple-500/30 rounded-full blur-3xl"
-          animate={{
-            scale: [1, 1.2, 1],
-            x: [0, 50, 0],
-            y: [0, -30, 0],
-          }}
-          transition={{
-            duration: 8,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
-        />
-        <motion.div
-          className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-gradient-to-r from-purple-500/30 to-pink-500/30 rounded-full blur-3xl"
-          animate={{
-            scale: [1.2, 1, 1.2],
-            x: [0, -30, 0],
-            y: [0, 40, 0],
-          }}
-          transition={{
-            duration: 10,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
-        />
+        {/* Overlay gradient for better text readability */}
+        <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-transparent to-slate-900/40" />
       </div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
@@ -111,19 +57,31 @@ const HeroSection: React.FC = () => {
               </motion.h1>
             </motion.div>
 
-            {/* Title with Typewriter Effect */}
+            {/* Title with Animated Developer Tag */}
             <motion.div variants={staggerItem} className="mb-8">
-              <div className="text-2xl md:text-3xl lg:text-4xl font-semibold text-gray-300 mb-4 flex items-center justify-center lg:justify-start">
-                <span className="text-blue-400">&lt;</span>
-                <motion.span
-                  initial={{ width: 0 }}
-                  animate={{ width: "auto" }}
-                  transition={{ duration: 2, delay: 1 }}
-                  className="inline-block overflow-hidden whitespace-nowrap border-r-2 border-blue-400 mx-1"
-                >
-                  {PERSONAL_INFO.title}
-                </motion.span>
-                <span className="text-blue-400">/&gt;</span>
+              <div className="text-center lg:text-left">
+                <div className="text-2xl md:text-3xl lg:text-4xl font-semibold text-gray-300 mb-4 flex items-center justify-center lg:justify-start">
+                  <span className="text-blue-400">&lt;</span>
+                  <motion.span
+                    initial={{ width: 0 }}
+                    animate={{ width: "auto" }}
+                    transition={{ duration: 2, delay: 1 }}
+                    className="inline-block overflow-hidden whitespace-nowrap"
+                  >
+                    {PERSONAL_INFO.title}
+                  </motion.span>
+                  <motion.span
+                    aria-hidden="true"
+                    className="inline-block w-1 h-6 md:h-8 lg:h-10 ml-1 bg-blue-400 align-bottom"
+                    animate={{ opacity: [0, 1, 1, 0, 0] }}
+                    transition={{
+                      duration: 1,
+                      repeat: Infinity,
+                      repeatDelay: 0.5,
+                    }}
+                  />
+                  <span className="text-blue-400">/&gt;</span>
+                </div>
               </div>
             </motion.div>
 

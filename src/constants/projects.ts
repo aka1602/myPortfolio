@@ -22,6 +22,7 @@ export const PROJECTS: Project[] = [
     category: "mobile",
     status: "completed",
     imageUrl: undefined,
+    color: "#10b981",
   },
   {
     id: "ambitionbox-app",
@@ -46,6 +47,7 @@ export const PROJECTS: Project[] = [
     category: "mobile",
     status: "completed",
     imageUrl: undefined,
+    color: "#8b5cf6",
   },
   {
     id: "ambitionbox-web",
@@ -68,6 +70,7 @@ export const PROJECTS: Project[] = [
     category: "web",
     status: "completed",
     imageUrl: undefined,
+    color: "#f59e0b",
   },
   {
     id: "hrcadre-website",
@@ -92,6 +95,7 @@ export const PROJECTS: Project[] = [
     category: "web",
     status: "completed",
     imageUrl: undefined,
+    color: "#ec4899",
   },
   {
     id: "luxury-closet-web",
@@ -113,6 +117,7 @@ export const PROJECTS: Project[] = [
     category: "web",
     status: "completed",
     imageUrl: undefined,
+    color: "#ef4444",
   },
   {
     id: "luxury-closet-ios",
@@ -134,5 +139,6 @@ export const PROJECTS: Project[] = [
     category: "mobile",
     status: "completed",
     imageUrl: undefined,
+    color: "#3b82f6",
   },
 ] as const;

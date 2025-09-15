@@ -4,6 +4,8 @@ import Navigation from "@/components/organisms/Navigation";
 import Footer from "@/components/organisms/Footer";
 import HeroSection from "@/features/hero/HeroSection";
 import AboutSection from "@/features/about/AboutSection";
+import Skills3DSection from "@/features/skills/Skills3DSection";
+import Projects3DSection from "@/features/projects/Projects3DSection";
 import ProjectsSection from "@/features/projects/ProjectsSection";
 import ContactSection from "@/features/contact/ContactSection";
 import GameModal from "@/components/molecules/GameModal";
@@ -17,6 +19,8 @@ export default function Home() {
       <main>
         <HeroSection />
         <AboutSection />
+        <Skills3DSection />
+        <Projects3DSection />
         <ProjectsSection />
         <ContactSection />
       </main>
