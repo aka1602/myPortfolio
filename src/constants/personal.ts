@@ -35,7 +35,7 @@ const experienceText = formatExperience();
 export const PERSONAL_INFO = {
   name: "Akash Gupta",
   title: "Senior Frontend Engineer",
-  email: "akash.greenworld@gmail.com",
+  email: "akash.greenwork1@gmail.com",
   phone: "9598029090",
   location: "Bengaluru",
   github: "https://github.com/aka1602",
