@@ -113,13 +113,13 @@ const HeroSection: React.FC = () => {
 
             {/* Title with Typewriter Effect */}
             <motion.div variants={staggerItem} className="mb-8">
-              <div className="text-2xl md:text-3xl lg:text-4xl font-semibold text-gray-300 mb-4">
+              <div className="text-2xl md:text-3xl lg:text-4xl font-semibold text-gray-300 mb-4 flex items-center justify-center lg:justify-start">
                 <span className="text-blue-400">&lt;</span>
                 <motion.span
                   initial={{ width: 0 }}
                   animate={{ width: "auto" }}
                   transition={{ duration: 2, delay: 1 }}
-                  className="inline-block overflow-hidden whitespace-nowrap border-r-2 border-blue-400"
+                  className="inline-block overflow-hidden whitespace-nowrap border-r-2 border-blue-400 mx-1"
                 >
                   {PERSONAL_INFO.title}
                 </motion.span>
