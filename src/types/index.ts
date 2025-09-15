@@ -8,8 +8,8 @@ export interface Project {
   liveUrl?: string;
   imageUrl?: string;
   featured: boolean;
-  category: 'web' | 'mobile' | 'fullstack';
-  status: 'completed' | 'in-progress' | 'planned';
+  category: "web" | "mobile" | "fullstack";
+  status: "completed" | "in-progress" | "planned";
 }
 
 export interface WorkExperience {
@@ -22,8 +22,8 @@ export interface WorkExperience {
 
 export interface Skill {
   name: string;
-  level: 'beginner' | 'intermediate' | 'advanced' | 'expert';
-  category: 'frontend' | 'backend' | 'tools' | 'concepts';
+  level: "beginner" | "intermediate" | "advanced" | "expert";
+  category: "frontend" | "backend" | "tools" | "concepts";
 }
 
 export interface SocialLink {
@@ -41,13 +41,7 @@ export interface SEOProps {
 }
 
 export interface AnimationVariants {
-  hidden: {
-    opacity?: number;
-    y?: number;
-    x?: number;
-    scale?: number;
-  };
-  visible: {
+  [key: string]: {
     opacity?: number;
     y?: number;
     x?: number;
@@ -55,8 +49,9 @@ export interface AnimationVariants {
     transition?: {
       duration?: number;
       delay?: number;
-      ease?: string;
+      ease?: string | number[];
       staggerChildren?: number;
+      delayChildren?: number;
     };
   };
 }

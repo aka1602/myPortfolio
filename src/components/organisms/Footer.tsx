@@ -1,13 +1,16 @@
 "use client";
 
 import { motion } from "framer-motion";
-import Link from "next/link";
 import { PERSONAL_INFO, SOCIAL_LINKS } from "@/constants/personal";
 import { fadeInUp, staggerContainer, staggerItem } from "@/lib/animations";
 import Typography from "@/components/atoms/Typography";
 import Icon from "@/components/atoms/Icon";
+import { useGameReward } from "@/contexts/GameRewardContext";
+import { useGameModal } from "@/contexts/GameModalContext";
 
 const Footer: React.FC = () => {
+  const { hasWonGame } = useGameReward();
+  const { openGameModal } = useGameModal();
   // Use a fixed year to avoid hydration mismatch - update annually
   const currentYear = 2024;
 
@@ -93,7 +96,7 @@ const Footer: React.FC = () => {
                   whileTap={{ scale: 0.95 }}
                 >
                   <Icon
-                    name={link.icon as any}
+                    name={link.icon as "Github" | "Linkedin" | "Mail"}
                     size="lg"
                     className="text-gray-400 group-hover:text-blue-400 transition-colors duration-300"
                   />
@@ -142,21 +145,50 @@ const Footer: React.FC = () => {
                   {PERSONAL_INFO.email}
                 </Typography>
               </motion.a>
-              <motion.a
-                href={`tel:${PERSONAL_INFO.phone}`}
-                className="flex items-center space-x-3 p-3 rounded-lg hover:bg-white/5 transition-colors duration-300 group"
+              <motion.div
+                className={`flex items-center space-x-3 p-3 rounded-lg transition-colors duration-300 group ${
+                  !hasWonGame
+                    ? "cursor-pointer hover:bg-green-500/5 border border-green-500/20"
+                    : "cursor-pointer hover:bg-white/5"
+                }`}
                 whileHover={{ x: 4 }}
+                onClick={() => {
+                  if (!hasWonGame) {
+                    openGameModal();
+                  } else if (typeof window !== "undefined") {
+                    window.location.href = `tel:${PERSONAL_INFO.phone}`;
+                  }
+                }}
               >
                 <div className="p-2 bg-green-500/10 border border-green-500/20 rounded-lg">
                   <Icon name="Phone" size="sm" className="text-green-400" />
                 </div>
-                <Typography
-                  variant="body2"
-                  className="text-gray-300 font-medium group-hover:text-white"
-                >
-                  {PERSONAL_INFO.phone}
-                </Typography>
-              </motion.a>
+                <div>
+                  <Typography variant="body2" className="text-gray-400">
+                    Phone
+                  </Typography>
+                  <Typography
+                    variant="body2"
+                    className={`font-medium transition-colors duration-200 ${
+                      !hasWonGame
+                        ? "text-green-400 group-hover:text-green-300"
+                        : "text-white group-hover:text-green-400"
+                    }`}
+                  >
+                    {hasWonGame
+                      ? PERSONAL_INFO.phone
+                      : "🎮 Win a game to reveal"}
+                  </Typography>
+                  {!hasWonGame && (
+                    <Typography
+                      variant="body2"
+                      className="text-gray-500 text-xs mt-1"
+                    >
+                      Click to go to games
+                    </Typography>
+                  )}
+                </div>
+              </motion.div>
               <motion.div
                 className="flex items-center space-x-3 p-3 rounded-lg hover:bg-white/5 transition-colors duration-300"
                 whileHover={{ x: 4 }}

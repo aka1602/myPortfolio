@@ -2,23 +2,11 @@
 
 import { motion } from "framer-motion";
 import { PERSONAL_INFO, SOCIAL_LINKS } from "@/constants/personal";
-import {
-  fadeInUp,
-  fadeInLeft,
-  fadeInRight,
-  staggerContainer,
-  staggerItem,
-  typingContainer,
-  typingText,
-} from "@/lib/animations";
+import { fadeInRight, staggerContainer, staggerItem } from "@/lib/animations";
 import Typography from "@/components/atoms/Typography";
-import Button from "@/components/atoms/Button";
 import Icon from "@/components/atoms/Icon";
 
 const HeroSection: React.FC = () => {
-  const titleWords = PERSONAL_INFO.name.split(" ");
-  const subtitleWords = PERSONAL_INFO.title.split(" ");
-
   // Pre-defined positions to avoid hydration mismatch
   const particlePositions = Array.from({ length: 50 }, (_, i) => ({
     left: (i * 7.3) % 100,
@@ -104,7 +92,7 @@ const HeroSection: React.FC = () => {
                   variant="body1"
                   className="text-blue-400 font-medium"
                 >
-                  Hello, I'm
+                  Hello, I&apos;m
                 </Typography>
               </div>
             </motion.div>
@@ -146,8 +134,10 @@ const HeroSection: React.FC = () => {
                 className="text-gray-300 max-w-2xl mx-auto lg:mx-0 leading-relaxed text-lg opacity-90"
               >
                 Crafting exceptional digital experiences with{" "}
-                <span className="text-blue-400 font-semibold">6+ years</span> of
-                expertise in{" "}
+                <span className="text-blue-400 font-semibold">
+                  {PERSONAL_INFO.experienceText}
+                </span>{" "}
+                of expertise in{" "}
                 <span className="text-purple-400 font-semibold">React</span>,{" "}
                 <span className="text-pink-400 font-semibold">Next.js</span>,
                 and{" "}
@@ -222,7 +212,7 @@ const HeroSection: React.FC = () => {
                   transition={{ delay: 2 + index * 0.1 }}
                 >
                   <Icon
-                    name={link.icon as any}
+                    name={link.icon as "Github" | "Linkedin" | "Mail"}
                     size="lg"
                     className="text-gray-400 group-hover:text-blue-400 transition-colors duration-300"
                   />
@@ -279,7 +269,10 @@ const HeroSection: React.FC = () => {
                       className="text-green-400 ml-4"
                     >
                       <span className="text-gray-500">02</span> name:{" "}
-                      <span className="text-orange-400">"Akash Gupta"</span>,
+                      <span className="text-orange-400">
+                        &quot;Akash Gupta&quot;
+                      </span>
+                      ,
                     </motion.div>
                     <motion.div
                       initial={{ opacity: 0, x: -20 }}
@@ -289,7 +282,7 @@ const HeroSection: React.FC = () => {
                     >
                       <span className="text-gray-500">03</span> role:{" "}
                       <span className="text-orange-400">
-                        "Senior Frontend Engineer"
+                        &quot;Senior Frontend Engineer&quot;
                       </span>
                       ,
                     </motion.div>
@@ -300,9 +293,16 @@ const HeroSection: React.FC = () => {
                       className="text-green-400 ml-4"
                     >
                       <span className="text-gray-500">04</span> skills: [
-                      <span className="text-orange-400">"React"</span>,{" "}
-                      <span className="text-orange-400">"Next.js"</span>,{" "}
-                      <span className="text-orange-400">"TypeScript"</span>],
+                      <span className="text-orange-400">&quot;React&quot;</span>
+                      ,{" "}
+                      <span className="text-orange-400">
+                        &quot;React Native&quot;
+                      </span>
+                      ,{" "}
+                      <span className="text-orange-400">
+                        &quot;Next.js&quot;
+                      </span>
+                      ],
                     </motion.div>
                     <motion.div
                       initial={{ opacity: 0, x: -20 }}
@@ -311,7 +311,10 @@ const HeroSection: React.FC = () => {
                       className="text-green-400 ml-4"
                     >
                       <span className="text-gray-500">05</span> experience:{" "}
-                      <span className="text-blue-400">6</span>,
+                      <span className="text-blue-400">
+                        {PERSONAL_INFO.experienceText}
+                      </span>
+                      ,
                     </motion.div>
                     <motion.div
                       initial={{ opacity: 0, x: -20 }}
@@ -321,7 +324,7 @@ const HeroSection: React.FC = () => {
                     >
                       <span className="text-gray-500">06</span> passion:{" "}
                       <span className="text-orange-400">
-                        "Building amazing UIs"
+                        &quot;Building amazing UIs&quot;
                       </span>
                     </motion.div>
                     <motion.div

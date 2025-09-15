@@ -228,7 +228,7 @@ const RockPaperScissorsGame: React.FC<{ onWin: () => void }> = ({ onWin }) => {
               </Typography>
               {result === "win" && (
                 <Typography variant="body2" className="text-green-400">
-                  🎁 You've unlocked my contact details!
+                  🎁 You&apos;ve unlocked my contact details!
                 </Typography>
               )}
             </motion.div>

@@ -1,12 +1,10 @@
 "use client";
 
 import { motion } from "framer-motion";
-import Image from "next/image";
 import { Project } from "@/types";
 import { cn } from "@/lib/utils";
 import { hoverLift, scaleIn } from "@/lib/animations";
 import Typography from "@/components/atoms/Typography";
-import Button from "@/components/atoms/Button";
 import Icon from "@/components/atoms/Icon";
 
 interface ProjectCardProps {

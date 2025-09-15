@@ -5,8 +5,12 @@ import { PERSONAL_INFO, SKILLS, WORK_EXPERIENCE } from "@/constants/personal";
 import { fadeInUp, fadeInLeft, fadeInRight } from "@/lib/animations";
 import Typography from "@/components/atoms/Typography";
 import Icon from "@/components/atoms/Icon";
+import { useGameReward } from "@/contexts/GameRewardContext";
+import { useGameModal } from "@/contexts/GameModalContext";
 
 const AboutSection: React.FC = () => {
+  const { hasWonGame } = useGameReward();
+  const { openGameModal } = useGameModal();
   return (
     <section
       id="about"
@@ -22,7 +26,7 @@ const AboutSection: React.FC = () => {
         {/* Section Header */}
         <motion.div
           className="text-center mb-20"
-          variants={fadeInUp as any}
+          variants={fadeInUp}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
@@ -54,7 +58,7 @@ const AboutSection: React.FC = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 mb-20">
           {/* Left Column - About Content */}
           <motion.div
-            variants={fadeInLeft as any}
+            variants={fadeInLeft}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-100px" }}
@@ -123,7 +127,7 @@ const AboutSection: React.FC = () => {
 
           {/* Right Column - Contact Info */}
           <motion.div
-            variants={fadeInRight as any}
+            variants={fadeInRight}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-100px" }}
@@ -177,7 +181,22 @@ const AboutSection: React.FC = () => {
                   </div>
                 </div>
 
-                <div className="flex items-center space-x-4 p-4 rounded-xl hover:bg-white/5 transition-colors">
+                <motion.div
+                  className={`flex items-center space-x-4 p-4 rounded-xl transition-colors cursor-pointer ${
+                    !hasWonGame
+                      ? "hover:bg-purple-500/5 border border-purple-500/20"
+                      : "hover:bg-white/5"
+                  }`}
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                  onClick={() => {
+                    if (!hasWonGame) {
+                      openGameModal();
+                    } else if (typeof window !== "undefined") {
+                      window.location.href = `tel:${PERSONAL_INFO.phone}`;
+                    }
+                  }}
+                >
                   <div className="w-12 h-12 bg-purple-500/10 border border-purple-500/20 rounded-xl flex items-center justify-center">
                     <Icon name="Phone" size="lg" className="text-purple-400" />
                   </div>
@@ -190,12 +209,24 @@ const AboutSection: React.FC = () => {
                     </Typography>
                     <Typography
                       variant="body1"
-                      className="text-white font-semibold"
+                      className={`font-semibold transition-colors duration-200 ${
+                        !hasWonGame ? "text-purple-400" : "text-white"
+                      }`}
                     >
-                      {PERSONAL_INFO.phone}
+                      {hasWonGame
+                        ? PERSONAL_INFO.phone
+                        : "🎮 Win a game to reveal"}
                     </Typography>
+                    {!hasWonGame && (
+                      <Typography
+                        variant="body2"
+                        className="text-gray-500 text-xs mt-1"
+                      >
+                        Click to go to games
+                      </Typography>
+                    )}
                   </div>
-                </div>
+                </motion.div>
               </div>
 
               <motion.button
@@ -211,7 +242,7 @@ const AboutSection: React.FC = () => {
 
         {/* Skills Section - Clean Grid */}
         <motion.div
-          variants={fadeInUp as any}
+          variants={fadeInUp}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
@@ -332,7 +363,7 @@ const AboutSection: React.FC = () => {
         {/* Experience Timeline - Simplified */}
         <motion.div
           id="experience"
-          variants={fadeInUp as any}
+          variants={fadeInUp}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}

@@ -4,9 +4,7 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { PROJECTS } from "@/constants/projects";
 import { fadeInUp, staggerContainer, staggerItem } from "@/lib/animations";
-import { cn } from "@/lib/utils";
 import Typography from "@/components/atoms/Typography";
-import Button from "@/components/atoms/Button";
 import ProjectCard from "@/components/molecules/ProjectCard";
 
 const categories = [
@@ -175,7 +173,7 @@ const ProjectsSection: React.FC = () => {
               className="text-gray-300 mb-8 max-w-2xl mx-auto text-lg leading-relaxed"
             >
               Check out my GitHub profile for more projects, contributions, and
-              code samples. I'm always working on something new!
+              code samples. I&apos;m always working on something new!
             </Typography>
             <motion.button
               className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-full font-semibold text-lg shadow-2xl hover:shadow-blue-500/25 transition-all duration-300"

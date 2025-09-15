@@ -97,11 +97,11 @@ const ContactSection: React.FC = () => {
     {
       icon: "Mail" as const,
       label: "Email",
-      value: hasWonGame ? PERSONAL_INFO.email : "🎮 Win a game to reveal",
-      href: hasWonGame ? `mailto:${PERSONAL_INFO.email}` : "#about",
+      value: PERSONAL_INFO.email,
+      href: `mailto:${PERSONAL_INFO.email}`,
       color: "text-blue-600 dark:text-blue-400",
       bgColor: "bg-blue-100 dark:bg-blue-900/30",
-      isLocked: !hasWonGame,
+      isLocked: false,
     },
     {
       icon: "Phone" as const,
@@ -133,7 +133,7 @@ const ContactSection: React.FC = () => {
       >
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <motion.div
-            variants={fadeInUp as any}
+            variants={fadeInUp}
             initial="hidden"
             animate="visible"
             className="bg-white dark:bg-gray-900 rounded-2xl p-12 shadow-lg"
@@ -234,7 +234,7 @@ const ContactSection: React.FC = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
           {/* Contact Information */}
           <motion.div
-            variants={fadeInLeft as any}
+            variants={fadeInLeft}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-100px" }}
@@ -339,7 +339,7 @@ const ContactSection: React.FC = () => {
                       whileTap={{ scale: 0.95 }}
                     >
                       <Icon
-                        name={link.icon as any}
+                        name={link.icon as "Github" | "Linkedin" | "Mail"}
                         size="lg"
                         className="text-gray-400 group-hover:text-blue-400 transition-colors duration-200"
                       />
@@ -352,7 +352,7 @@ const ContactSection: React.FC = () => {
 
           {/* Contact Form */}
           <motion.div
-            variants={fadeInRight as any}
+            variants={fadeInRight}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-100px" }}

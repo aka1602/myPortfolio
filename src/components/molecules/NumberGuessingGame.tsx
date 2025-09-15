@@ -137,13 +137,13 @@ const NumberGuessingGame: React.FC<{ onWin: () => void }> = ({ onWin }) => {
         <div className="text-center space-y-6">
           <div className="text-6xl mb-4">🤔</div>
           <Typography variant="body1" className="text-gray-300 text-lg">
-            I'm thinking of a number between{" "}
+            I&apos;m thinking of a number between{" "}
             <span className="text-blue-400 font-bold">1</span> and{" "}
             <span className="text-purple-400 font-bold">100</span>
           </Typography>
           <Typography variant="body2" className="text-gray-400">
-            You have {maxAttempts} attempts to guess it. I'll give you hints!
-            🔥❄️
+            You have {maxAttempts} attempts to guess it. I&apos;ll give you
+            hints! 🔥❄️
           </Typography>
           <motion.button
             className="px-8 py-4 bg-gradient-to-r from-green-500 to-blue-500 text-white rounded-xl font-semibold shadow-lg hover:shadow-xl transition-all duration-300 text-lg"
@@ -151,7 +151,7 @@ const NumberGuessingGame: React.FC<{ onWin: () => void }> = ({ onWin }) => {
             whileTap={{ scale: 0.95 }}
             onClick={initializeGame}
           >
-            🎮 Let's Play!
+            🎮 Let&apos;s Play!
           </motion.button>
         </div>
       ) : (
@@ -213,7 +213,7 @@ const NumberGuessingGame: React.FC<{ onWin: () => void }> = ({ onWin }) => {
             <div className="space-y-4">
               <div className="text-center">
                 <Typography variant="body2" className="text-gray-400 mb-2">
-                  What's your guess?
+                  What&apos;s your guess?
                 </Typography>
                 <div className="flex space-x-3 max-w-sm mx-auto">
                   <input
